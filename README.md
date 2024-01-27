@@ -1,18 +1,18 @@
-#Worst Rated Movies of 2023💯
+# Worst Rated Movies of 2023💯
 
-####Idea - List of worst rated movies based on public critics
+#### Idea - List of worst rated movies based on public critics
 
 
-###Features✌️
+### Features✌️
  
-####-user ratings/reviews
+#### - user ratings/reviews
 
-####-Sort/filter
+#### - Sort/filter
 
-####-User generated lists
+#### - User generated lists
 
-####-Trailer links
+#### - Trailer links respectively
 
 
-####I hope you guys like my website.Thank You✌️✨~
+#### I hope you guys like my website.Thank You✌️✨~
 
