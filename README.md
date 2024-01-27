@@ -14,5 +14,14 @@
 #### - Trailer links respectively
 
 
+### Guidelines
+
+#### - No spoilers
+
+#### - Only contructive reviews 
+
+#### - No sharing of copyrighted content
+
+
 #### I hope you guys like my website.Thank You✌️✨~
 
