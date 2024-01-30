@@ -9,3 +9,7 @@ app.listen(3000,()=>{
 app.get('/ping',(req,res)=>{
     res.send("hello express!")
 })
+
+app.get('/',(req,res)=>{
+    res.send("WELCOME TO MY HOMEPAGE")
+})
