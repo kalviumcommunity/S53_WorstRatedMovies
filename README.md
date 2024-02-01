@@ -24,3 +24,7 @@
 
 
 #### I hope you guys like my website.Thank You✌️✨~
+
+# Deployed 
+
+###[**DEPLOYED LINK**](https://worstratedmovies.onrender.com/ping)
