@@ -106,6 +106,7 @@ const movie1 = new Movie({
 
 const mongoose = require("mongoose")
 // Connect to your local MongoDB instance
+
 mongoose.connect(process.env.MONGO_KEY, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -113,8 +114,10 @@ mongoose.connect(process.env.MONGO_KEY, {
   .then(() => console.log('Connected to local MongoDB'))
   .catch(err => console.error('Error connecting to local MongoDB:', err));
 
+
 const movieData = [movie1,movie2,movie3,movie4,movie5,movie6,movie7,movie8,movie9,movie10 
 ];
+
 
 Movie.insertMany(movieData)
   .then(() => console.log('Movies added successfully!'))
