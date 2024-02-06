@@ -103,22 +103,33 @@ const movie1 = new Movie({
     Password: "password234"
   })
 
-
 const mongoose = require("mongoose")
 // Connect to your local MongoDB instance
-
-mongoose.connect(process.env.MONGO_KEY, {
+mongoose.connect(process.env.MONGO_KEY , {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
   .then(() => console.log('Connected to local MongoDB'))
   .catch(err => console.error('Error connecting to local MongoDB:', err));
 
+const isConnected = mongoose.connection.readyState === '1'
 
 const movieData = [movie1,movie2,movie3,movie4,movie5,movie6,movie7,movie8,movie9,movie10 
 ];
 
 
-Movie.insertMany(movieData)
-  .then(() => console.log('Movies added successfully!'))
-  .catch(err => console.error('Error adding movies:', err));
+
+
+
+
+// Movie.insertMany(movieData)
+//   .then(() => {
+//     console.log('Movies added successfully!')
+   
+//   })
+//   .catch(err =>{
+    
+//     console.error('Error adding movies:', err)
+//   } );
+
+module.exports = movieData,isConnected;
