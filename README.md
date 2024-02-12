@@ -22,5 +22,5 @@
 
 #### - No sharing of copyrighted content
 
-
+### Deployed Link - https://worstratedmovies.vercel.app/ 
 #### I hope you guys like my website.Thank You✌️✨~
