@@ -27,5 +27,5 @@
 
 ## Deployed 
 
-###[**DEPLOYED LINK**](https://worstratedmovies.vercel.app/)
+### [**DEPLOYED LINK**](https://worstratedmovies.vercel.app/)
 
