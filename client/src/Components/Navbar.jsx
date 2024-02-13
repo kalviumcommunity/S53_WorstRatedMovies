@@ -11,7 +11,7 @@ const Navbar = () => {
           {/* navbar */}
           <nav className="flex justify-between bg-gray-900 text-white w-screen">
             <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-              <a className="text-2xl font-bold font-heading title" href="#">
+              <a className="text-2xl font-bold font-heading title uppercase" href="#">
                 {/* <img className="h-9" src="logo.png" alt="logo"> */}
                 WorstRatedMovies
               </a>
