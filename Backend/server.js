@@ -3,8 +3,6 @@ const app = express();
 const movieData = require("./init/database")
 const isConnected = require("./init/database")
 
-
-
 app.get('/ping',(req,res)=>{
     res.send("hello express!")
 })
