@@ -1,12 +1,14 @@
+
 const express = require("express")
 const app = express();
 const movieData = require("./init/database")
 const isConnected = require("./init/database")
+const cors = require('cors')
+app.use(cors())
 
 app.get('/ping',(req,res)=>{
     res.send("hello express!")
 })
-
 
 app.listen(3000,()=>{
     console.log("server running in port 3000")
