@@ -4,8 +4,6 @@ const Navbar = () => {
   return (
     <>
    {/* component */}
-
-
       <div className="flex flex-wrap place-items ">
         <section className="relative mx-auto" >
           {/* navbar */}
