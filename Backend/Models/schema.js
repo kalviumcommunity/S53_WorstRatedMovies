@@ -6,7 +6,7 @@ const MovieSchema = new Schema({
   ImgLink:{type:String,required:true},
   Date : { type: String },
   Director : { type: String },
-  Rating : { type: String, required: true },
+  Rating : { type: Number, required: true },
   Comments: Array,
   
 })
