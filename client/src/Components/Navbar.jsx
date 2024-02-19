@@ -1,5 +1,6 @@
 import React from 'react'
 // import theatre from 'client\src\assets\theatre.png'
+import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <>
@@ -15,13 +16,21 @@ const Navbar = () => {
               </a>
               {/* Nav Links */}
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-10">
+                <Link to="/">
+                
                 <li><a className="hover:text-gray-200" href="#">Home</a></li>
-                <li><a className="hover:text-gray-200" href="#">Create List</a></li>
+                </Link>
+              <Link to='/post'>
+              
+                <li><a className="hover:text-gray-200" href="#">Add</a></li>
+              </Link>
+
+
                 <li><a className="hover:text-gray-200" href="#">About Us</a></li>
                 <li><a className="hover:text-gray-200" href="#">Sign in</a></li>
               </ul>
               {/* Header Icons */}
-              <div className="hidden xl:flex items-center space-x-5 items-center">
+              <div className="hidden xl:flex items-center space-x-5 ">
                 <a className="hover:text-gray-200" href="#">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
