@@ -7,7 +7,7 @@ const MovieSchema = new Schema({
   Date : { type: String },
   Director : { type: String },
   Rating : { type: Number, required: true },
-  Comments: Array,
+  Comments:Array,
   
 })
 
