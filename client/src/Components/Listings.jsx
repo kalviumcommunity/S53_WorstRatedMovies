@@ -1,43 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import Cards from './Cards';
-import axios from 'axios';
-
-
+import React, { useEffect, useState } from "react";
+import Cards from "./Cards";
+import axios from "axios";
 
 function Listings() {
-    const [data,setdata] = useState([])
+  const [data, setdata] = useState([]);
 
-useEffect(()=>{
+  useEffect(() => {
     fetchData();
+  }, []);
 
-},[])
 
-
-const fetchData = async()=>{
-    axios.get("http://localhost:3000/api")
-    .then((res)=>{
+  const fetchData = async () => {
+    axios
+      .get("http://localhost:3000/api")
+      .then((res) => {
         console.log(res);
-        setdata(res.data.data)
-        console.log(res.data.data)
-    })
-    .catch((err)=>{
+        setdata(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((err) => {
         console.error(err);
-    })
+      });
+    };
+    
 
 
-}
+//for deleting the element 
+    const handleDelete = (_id) => {
+      axios
+        .delete(`http://localhost:3000/api/delete/${_id}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
+      console.log("successful", _id);
+      fetchData();
+      window.location.reload();
 
-  return (
+    };
  
-
-        <div className='bg-black grid grid-cols-2'>
-        {data.length!=0 && data.map((e,i)=>(
-            <Cards key={i} name={e.MovieName} img={e.ImgLink} rating={e.Rating} director={e.Director} date={e.Date} comments={e.Comments}/>
+  return (
+    <div className="bg-black grid grid-cols-2">
+      {data.length != 0 &&
+        data.map((e, i) => (
+          <Cards
+            key={e._id}
+            oldData={e}
+            name={e.MovieName}
+            img={e.ImgLink}
+            rating={e.Rating}
+            director={e.Director}
+            date={e.Date}
+            comments={e.Comments}
+            path={e._id}
+            onDelete={()=> handleDelete(e._id)
+             }
+          />
         ))}
-        </div>
-
-  
-  )
+    </div>
+  );
 }
 
-export default Listings
+export default Listings;

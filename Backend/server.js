@@ -20,8 +20,6 @@ app.use(express.json())
 app.get('/data', (req, res) => {
   res.send(movieData);
 });
-
-
 app.post('/data/api', (req, res) => {
   let body=req.body
   res.status(201).json({

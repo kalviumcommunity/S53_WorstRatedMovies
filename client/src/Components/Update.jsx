@@ -1,38 +1,65 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-function Addpost() {
-  const navigate = useNavigate();
-
+function Update() {
   const [newPost, setNewPost] = useState({
     MovieName: "",
     ImgLink: "",
     Rating: 3,
     Date: "",
-    Director: "",
+    Director: ""
   });
+
+  // const { setValue } = useForm();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleChange = (e, field) => {
     setNewPost({ ...newPost, [field]: e.target.value });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/create",
-        newPost
-      );
+      const response = await axios.put(`http://localhost:3000/api/update/${id}`, newPost);
       console.log(response.data);
-      navigate("/listings");
+      navigate('/listings');
     } catch (error) {
-      console.error("Error fetching :", error);
+      console.error('Error fetching :', error);
     }
   };
 
+  
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/${id}`)
+      .then((res) => {
+        const postData = res.data.data; // Assuming your response structure has a 'data' property
+        setNewPost({
+          MovieName: postData.MovieName,
+          ImgLink: postData.ImgLink,
+          Rating: postData.Rating,
+          Date: postData.Date,
+          Director: postData.Director
+        });
+        console.log(newPost)
+      })
+      
+      .catch((err) => {
+        console.log(err);
+        if (err.response && err.response.data === "Post not found..!") {
+          // Handle error if post is not found
+        } else {
+          console.log("error");
+        }
+      });
+  }, [id]);
+  
   return (
-    <div className="h-[90vh] w-[70vw] mx-[15vw] mt-[15vh] ">
+    <>
+    <div className="h-[80vh] w-[70vw] mx-[15vw] mt-[15vh]">
       <form onSubmit={handleSubmit}>
         <div className="grid gap-6 mb-6 md:grid-cols-2">
           <div>
@@ -44,11 +71,13 @@ function Addpost() {
             </label>
             <input
               type="text"
-              id="first_name"
+              // name="MovieName"
               value={newPost.MovieName}
+
+              id="first_name"
               onChange={(e) => handleChange(e, "MovieName")}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Movie Name"
+              placeholder=" "
               required
             />
           </div>
@@ -67,7 +96,7 @@ function Addpost() {
               value={newPost.Rating}
               onChange={(e) => handleChange(e, "Rating")}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
+              placeholder=" "
               required
               max={6}
               min={0}
@@ -87,7 +116,7 @@ function Addpost() {
               value={newPost.ImgLink}
               onChange={(e) => handleChange(e, "ImgLink")}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Movie poster link"
+              placeholder=" "
               required
             />
           </div>
@@ -104,7 +133,7 @@ function Addpost() {
               value={newPost.Director}
               onChange={(e) => handleChange(e, "Director")}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Director name"
+              placeholder=" "
               required
             />
           </div>
@@ -121,7 +150,7 @@ function Addpost() {
               value={newPost.Date}
               onChange={(e) => handleChange(e, "Date")}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="date of release"
+              placeholder=" "
               //   pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               required
             />
@@ -160,7 +189,12 @@ function Addpost() {
         </button>
       </form>
     </div>
-  );
+    
+    
+
+
+    </>
+  )
 }
 
-export default Addpost;
+export default Update
