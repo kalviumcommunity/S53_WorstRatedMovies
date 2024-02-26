@@ -8,6 +8,7 @@ const MovieSchema = new Schema({
   Director : { type: String },
   Rating : { type: Number, required: true },
   Comments:Array,
+  User: { type: String },
   
 })
 
