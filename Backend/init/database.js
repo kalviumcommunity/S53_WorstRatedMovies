@@ -9,6 +9,7 @@ const movie1 = new Movie({
     Director: "Om Raut",
     Rating: 3.8,
     Comments: [ "Poor character development","poor execution of vfx", "Over-reliance on visual effects"],
+    User:"krishna",
 
   })
 
@@ -20,6 +21,7 @@ const movie1 = new Movie({
     Director: "Surender Reddy",
     Rating: 4.2,
     Comments: ["Clichéd action sequences", "Lacks originality", "Unconvincing performances"],
+    User:"krishna",
 
   })
   const movie3 = new Movie({
@@ -30,6 +32,7 @@ const movie1 = new Movie({
     Director: "Farhad Samji",
     Rating: 4.3,
     Comments: ["Unfunny jokes", "Drags on for too long", "Poor direction"],
+    User:"krishna",
   
   })
   const movie4 = new Movie({
@@ -40,6 +43,7 @@ const movie1 = new Movie({
     Director: "Guna Sekhar",
     Rating: 4.4,
     Comments: ["Lacks emotional depth", "Visually stunning but underwhelming story", "Unconvincing chemistry between leads"],
+    User:"Jason",
    
   })
   const movie5 = new Movie({
@@ -50,6 +54,8 @@ const movie1 = new Movie({
     Director: "Rohit Dhawan",
     Rating: 4.5,
     Comments: ["Predictable plot", "Over-the-top action", "Unnecessary songs"],
+    User:"Jason",
+
  
   })
   const movie6 = new Movie({
@@ -60,6 +66,7 @@ const movie1 = new Movie({
     Director: "Shirish Kunder",
     Rating: 1.5,
     Comments: ["Confusing plot", "Poor acting", "Unnecessary twists"],
+    User:"Jason",
   
   })
   const movie7 = new Movie({
@@ -70,6 +77,7 @@ const movie1 = new Movie({
     Director: "P Vasu",
     Rating: 2.6,
     Comments: ["Boring and repetitive", "Lacks the charm of the original"],
+    User:"Harsha",
 
   })
   const movie8 = new Movie({
@@ -80,6 +88,7 @@ const movie1 = new Movie({
     Director: "Anil Ravipudi",
     Rating: 3.2,
     Comments: ["Overly loud and chaotic", "Unfunny jokes", "Lacks substance"],
+    User:"Harsha",
 
   })
   const movie9 = new Movie({
@@ -87,9 +96,9 @@ const movie1 = new Movie({
     ImgLink:"https://m.media-amazon.com/images/M/MV5BMzZlZDQ5NWItY2RjMC00NjRiLTlmZTgtZGE2ODEyMjVlOTJhXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
     Date: "2023-12-22",
     Director: "James Wan",
-    Rating: 4.9,
-    
-Comments: ["Disappointing sequel", "Messy plot", "CGI spectacle overload"],
+    Rating: 4.9,   
+    Comments: ["Disappointing sequel", "Messy plot", "CGI spectacle overload"],
+    User:"Harsha",
   })
   const movie10 = new Movie({
     
@@ -99,6 +108,7 @@ Comments: ["Disappointing sequel", "Messy plot", "CGI spectacle overload"],
     Director: "Nia DaCosta",
     Rating: 5.0,
     Comments: ["Baffling plot", "Mixed performances", "Inconsistent pacing"],
+    User:"Harsha",
 
   })
 

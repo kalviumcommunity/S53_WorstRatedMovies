@@ -1,8 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express.Router()
-const userdata = require('../Models/schema')
+const userdata = require('./Models/schema')
 require("dotenv").config()
+const { Validation } = require('./Utils/Validation')
+  
 
 // // Connect to your local MongoDB instance
 // mongoose.connect(process.env.MONGO_KEY , {
@@ -10,7 +12,19 @@ require("dotenv").config()
 //     useUnifiedTopology: true,
 //   })
 //     .then(() => console.log('Connected to local MongoDB'))
-//     .catch(err => console.error('Error connecting to local MongoDB:', err));
+//     .catch(err => console.error('Error connecting to local MongoDB:', err));  
+
+
+// function for validation 
+const validatingPost = (req, res, next) => { 
+    let { error } = Validation.validate(req.body);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
+    }
+    else {
+      next();
+    }
+  };
 
 //read
 
@@ -26,7 +40,7 @@ app.get('/:id', async (req, res) => {
     try {
         const id = req.params.id; // Extracting user ID from the request parameters
         const data = await userdata.findById(id); // Finding the user by ID
-        
+         
         if (!data) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
@@ -40,15 +54,15 @@ app.get('/:id', async (req, res) => {
 
 
 // create data 
-app.post("/create",async (req,res)=>{
+app.post("/create",validatingPost,async (req,res)=>{
     console.log(req.body)
     const data = new userdata(req.body)
     await data.save()
     res.send({success : true , message : "data saved successfully"})
-})
+});
 
 // update data by id 
-app.put("/update/:id", async (req, res) => {
+app.put("/update/:id", validatingPost,async (req, res) => {  
     const id = req.params.id; // Corrected from req.params._id to req.params.id
     const newData = req.body
     console.log(newData)

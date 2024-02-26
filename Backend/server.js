@@ -29,7 +29,7 @@ app.post('/data/api', (req, res) => {
 
 });
 
-const router = require("./Routes/routes")
+const router = require("./routes")
 app.use('/api',router)
 
 
