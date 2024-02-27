@@ -7,6 +7,8 @@ import Cards from './Components/Cards'
 import Listings from './Components/Listings'
 import Addpost from './Components/Addpost'
 import Update from './Components/Update'
+import Signup from './Components/signup'
+import Signin from './Components/Signin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +23,9 @@ function App() {
     <Route element={<Listings/>}  path="/listings" />
     <Route path='/post' element={<Addpost/>}/>
     <Route path='/update/:id' element={<Update/>} />
+    <Route path='/signup' element={<Signup/>} />
+    <Route path='/Signin' element={<Signin/>} />
+
     
      </Routes>
 
