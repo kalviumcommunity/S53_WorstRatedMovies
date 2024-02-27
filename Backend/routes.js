@@ -1,10 +1,14 @@
 const express = require('express')
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const app = express.Router()
 const userdata = require('./Models/schema')
 require("dotenv").config()
-const { Validation } = require('./Utils/Validation')
-  
+const { Validation, ValidationSignup } = require('./Utils/Validation')
+const User = require('./Models/user')
+const Joi = require("joi");
+const bcrypt = require("bcryptjs");
+
+
 
 // // Connect to your local MongoDB instance
 // mongoose.connect(process.env.MONGO_KEY , {
@@ -25,6 +29,24 @@ const validatingPost = (req, res, next) => {
       next();
     }
   };
+
+// signup validation function 
+  const validateUser = (req, res, next) => {
+    const { error } = ValidationSignup.validate(req.body);
+    if (error) {
+      // Return a 400 error if validation fails
+      return res.status(400).send(error.details[0].message);
+    } else {
+      next();
+    }
+}; 
+
+
+// sign in schema 
+const SigninSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+});
 
 //read
 
@@ -96,5 +118,70 @@ app.delete("/delete/:id",async (req,res)=>{
     res.send({success : true , message : "data deleted successfully"})
 
 })
+
+ 
+// sign up 
+app.post("/signup" ,validateUser,async (req, res) => {
+    const { fullname,username,email, password } = req.body;
+  
+    try {
+      // Check if the username already exists
+      const existingUser = await User.findOne({ email });
+  
+      if (existingUser) {
+        return res.json({ message: 'email already exists' });
+      }
+
+    //   password hashing 
+     const salt = await bcrypt.genSalt(10);
+     const hashedPassword = await bcrypt.hash(password,salt);
+
+      const newUser = new User({
+        fullname,
+        username,
+        email,
+        password:hashedPassword,
+      });
+  
+      await newUser.save();
+      res.status(201).json({ message: 'User registered successfully' });
+    } catch (error) {
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  })
+
+
+  //sign in
+  app.post("/signin",async(req,res) =>{
+    try{
+        const {error} = SigninSchema.validate(req.body);
+        if(error) return res.status(400).json({error: error.details[0].message});
+
+        const {username,password} = req.body;
+        
+        const user = await User.findOne({username});
+        
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+
+        if (!user || !isPasswordCorrect){
+            return res.status(400).json({error:"Invalid Username or Password"});
+        }
+       
+
+        
+        
+        res.status(200).json({
+            email:user.email,
+            fullname:user.fullname,
+            // usernamecookie:
+            // token:user.token
+        });
+        
+    }catch(error){
+        console.log("Error in Login Controller",error.message);
+        res.status(500).json({"error":"Internal Server Error"});
+    }
+})
+
 
 module.exports = app;
