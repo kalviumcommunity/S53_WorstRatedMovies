@@ -65,7 +65,7 @@ function Update() {
           <div>
             <label
               htmlFor="first_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium dark:text-white"
             >
               Movie Name
             </label>
@@ -85,7 +85,7 @@ function Update() {
           <div>
             <label
               htmlFor="visitors"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium dark:text-white"
             >
               Rating
             </label>
@@ -106,7 +106,7 @@ function Update() {
           <div>
             <label
               htmlFor="website"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium dark:text-white"
             >
               Image URL
             </label>
@@ -123,7 +123,7 @@ function Update() {
           <div>
             <label
               htmlFor="company"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium  dark:text-white"
             >
               Director
             </label>
@@ -140,7 +140,7 @@ function Update() {
           <div>
             <label
               htmlFor="phone"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium  dark:text-white"
             >
               Date
             </label>

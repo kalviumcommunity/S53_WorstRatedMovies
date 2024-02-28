@@ -10,7 +10,7 @@ function signup() {
     email: "",
     password: "",
   });
-
+  
   const handleChange = (e, field) => {
     setNewUser({ ...newUser, [field]: e.target.value });
   };
@@ -45,7 +45,7 @@ function signup() {
         );
         console.log("Response:", response.data);
         Cookies.set("username",newUser.username);
-        
+        Cookies.set("Token",response.data.TOKEN)
         // Redirect or perform any other actions upon successful registration
       } catch (error) {
         console.error("Error:", error);
@@ -56,7 +56,7 @@ function signup() {
     }
   };
   return (
-    <div className="bg-white rounded-lg py-5 text-black">
+    <div className="bg-[rgba(0, 0, 0, 0.932)] rounded-lg py-5 text-black">
       <div className="container flex flex-col mx-auto bg-gray-300 rounded-lg w-[40vw] ">
         <div className="flex justify-center w-full h-full xl:gap-14 lg:justify-normal md:gap-5 draggable">
           <div className="flex items-center justify-center w-full lg:p-12">
@@ -144,7 +144,7 @@ function signup() {
                 </button>
                 <p className="text-sm leading-relaxed text-grey-900">
                   Already registered?{" "}
-                  <a href="/signin" className="font-bold text-grey-700">
+                  <a href="/Signin" className="font-bold text-grey-700">
                     {" "}
                     Sign in{" "}
                   </a>

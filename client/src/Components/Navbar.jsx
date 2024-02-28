@@ -34,8 +34,9 @@ const Navbar = () => {
                 <li><a className="hover:text-gray-200" href="#">Add</a></li>
               </Link>
 
-
-                <li><a className="hover:text-gray-200" href="#">About Us</a></li>
+              <Link to='/filter'>
+                <li><a className="hover:text-gray-200" href="#">Filter</a></li>
+              </Link>
                 {/* <li><a className="hover:text-gray-200" href="#">Sign in</a></li> */}
               </ul>
               {/* Header Icons */}

@@ -26,6 +26,7 @@ function Signin() {
             console.log(response.data);
             // Save the token in a cookie
             Cookies.set('username',loginUser.username);
+            Cookies.set("Token",response.data.TOKEN)
             // Cookies.set('token',response.data.token)
             // document.cookie = "token=" + response.data.token
            
@@ -41,7 +42,7 @@ function Signin() {
       };
   return (
     // <div className='bg-black w-[100vw] h-[80vh]'> 
-    <div className="bg-white rounded-lg py-5 text-black">
+    <div className="bg-[rgba(0, 0, 0, 0.932)] rounded-lg py-5 text-black">
     <div className="container flex flex-col mx-auto bg-gray-300 rounded-lg w-[40vw] ">
       <div className="flex justify-center w-full h-full xl:gap-14 lg:justify-normal md:gap-5 draggable">
         <div className="flex items-center justify-center w-full lg:p-12">
@@ -74,7 +75,7 @@ function Signin() {
               </div> */}
               <button className="w-full px-6 py-5 mb-5 text-sm font-bold leading-none transition duration-300 md:w-96 rounded-2xl  bg-[#591FF9] text-white
                " onClick={handleSubmit}>Sign In</button>
-              <p className="text-sm leading-relaxed text-grey-900">Not registered yet? <a href="/signup" className="font-bold text-grey-700">Create an Account</a></p>
+              <p className="text-sm leading-relaxed text-grey-900">Not registered yet? <a href="/Signup" className="font-bold text-grey-700">Create an Account</a></p>
             </form>
           </div>
         </div>
