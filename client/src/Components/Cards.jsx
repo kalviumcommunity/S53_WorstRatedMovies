@@ -7,7 +7,7 @@ function Cards({ img, name, rating,director, date, comments, onDelete, path }) {
     navigate(`/update/${path}`)
   }
   return (
-    <div className="bg-black  w-[50vw] ml-[4vh]">
+    <div className="  w-[50vw] ml-[4vh]">
       <div className="card card-side bg-[whitesmoke]  text-black w-[40vw] m-10 h-[40vh] drop-shadow-[3px_5px_6px_rgb(225,225,225,0.75)] glass overflow-hidden card1 ">
         <img src={img} alt="Movie" className="bg-cover w-[15vw]" />
         <div className=" overflow-hidden ml-4 ">

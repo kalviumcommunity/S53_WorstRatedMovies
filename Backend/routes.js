@@ -7,6 +7,7 @@ const { Validation, ValidationSignup } = require('./Utils/Validation')
 const User = require('./Models/user')
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken'); 
 
 
 
@@ -17,7 +18,6 @@ const bcrypt = require("bcryptjs");
 //   })
 //     .then(() => console.log('Connected to local MongoDB'))
 //     .catch(err => console.error('Error connecting to local MongoDB:', err));  
-
 
 // function for validation 
 const validatingPost = (req, res, next) => { 
@@ -49,14 +49,22 @@ const SigninSchema = Joi.object({
 });
 
 //read
-
 app.use(express.json());
 app.get('/',async (req,res)=>{
+    // const data = await userdata.find({})
     const data = await userdata.find({})
-
     res.json({success : true , data : data})
 
 })
+  // getting user data 
+
+  app.get('/user',async (req,res)=>{
+    const data = await User.find({})
+  
+    res.json({success : true , data : data})
+  
+  })
+
 // get data by id 
 app.get('/:id', async (req, res) => {
     try {
@@ -132,6 +140,8 @@ app.post("/signup" ,validateUser,async (req, res) => {
         return res.json({ message: 'email already exists' });
       }
 
+
+
     //   password hashing 
      const salt = await bcrypt.genSalt(10);
      const hashedPassword = await bcrypt.hash(password,salt);
@@ -141,14 +151,27 @@ app.post("/signup" ,validateUser,async (req, res) => {
         username,
         email,
         password:hashedPassword,
+        
       });
+
   
       await newUser.save();
-      res.status(201).json({ message: 'User registered successfully' });
+      // console.log(req.body._id);
+      const token = jwt.sign({ result: req.body.username }, `${process.env.SECRET}`, { expiresIn: '7d' });
+
+            // Set the JWT token as a cookie
+            // res.cookie('Token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' });
+            
+      // res.status(200).json({message:'signed up',TOKEN: token});
+      
+
+      res.status(201).json({ message: 'User registered successfully',TOKEN: token });
     } catch (error) {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   })
+
+
 
 
   //sign in
@@ -166,6 +189,12 @@ app.post("/signup" ,validateUser,async (req, res) => {
         if (!user || !isPasswordCorrect){
             return res.status(400).json({error:"Invalid Username or Password"});
         }
+        const token = jwt.sign({ result: user.username }, `${process.env.SECRET}`, { expiresIn: '7d' });
+
+            // Set the JWT token as a cookie
+            // res.cookie('Token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' });
+            
+            res.status(200).json({message:'Logged in',TOKEN: token});
        
 
         
