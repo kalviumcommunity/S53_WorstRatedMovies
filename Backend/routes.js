@@ -158,13 +158,7 @@ app.post("/signup" ,validateUser,async (req, res) => {
       await newUser.save();
       // console.log(req.body._id);
       const token = jwt.sign({ result: req.body.username }, `${process.env.SECRET}`, { expiresIn: '7d' });
-
-            // Set the JWT token as a cookie
-            // res.cookie('Token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' });
-            
-      // res.status(200).json({message:'signed up',TOKEN: token});
-      
-
+   
       res.status(201).json({ message: 'User registered successfully',TOKEN: token });
     } catch (error) {
       res.status(500).json({ message: 'Internal Server Error' });
@@ -191,9 +185,6 @@ app.post("/signup" ,validateUser,async (req, res) => {
         }
         const token = jwt.sign({ result: user.username }, `${process.env.SECRET}`, { expiresIn: '7d' });
 
-            // Set the JWT token as a cookie
-            // res.cookie('Token', token, { maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' });
-            
             res.status(200).json({message:'Logged in',TOKEN: token});
        
 
