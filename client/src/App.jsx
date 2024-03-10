@@ -12,7 +12,7 @@ import Signin from './Components/Signin'
 import Filter from './Components/Filter'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
@@ -22,7 +22,7 @@ function App() {
     <Routes>
     <Route element={<Home/>}  path="/" />
     <Route element={<Listings/>}  path="/listings" />
-    {/* <Route path='/filter' element={<Filter/>}/> */}
+    <Route path='/filter' element={<Filter/>}/>
     <Route path='/post' element={<Addpost/>}/>
     <Route path='/update/:id' element={<Update/>} />
     <Route path='/signup' element={<Signup/>} />
