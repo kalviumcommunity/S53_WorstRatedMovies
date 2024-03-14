@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import axios from "axios";
+import { Await } from "react-router-dom";
 
 function Listings() {
   const [data, setdata] = useState([]);
@@ -8,7 +9,6 @@ function Listings() {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   const fetchData = async () => {
     axios
@@ -26,16 +26,25 @@ function Listings() {
 
 
 //for deleting the element 
-    const handleDelete = (_id) => {
-      axios
-        .delete(`https://worst-rated-movies-webapp.vercel.app/api/delete/${_id}`)
-        .then((res) => console.log(res))
-        .catch((err) => console.error(err));
-      console.log("successful", _id);
-      fetchData();
-      window.location.reload();
-
+    // const handleDelete = (_id) => {
+    //  axios 
+    //     .delete(`https://worst-rated-movies-webapp.vercel.app/api/delete/${_id}`)
+    //     .then((res) => console.log(res))
+    //     .catch((err) => console.error(err));
+    //   console.log("successful", _id);
+    //   // fetchData();
+    //   Await.window.location.reload()
+    // };
+    const handleDelete = async (_id) => {
+      try {
+        await axios.delete(`https://worst-rated-movies-webapp.vercel.app/api/delete/${_id}`);
+        console.log("successful", _id);
+        window.location.reload();
+      } catch (err) {
+        console.error(err);
+      }
     };
+    
  
   return (
     <div className="bg-black grid grid-cols-2">

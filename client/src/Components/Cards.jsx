@@ -34,6 +34,7 @@ function Cards({ img, name, rating,director, date, comments, onDelete, path }) {
             onClick={() => {
               if (window.confirm("Are you sure you want to delete?")) {
                 onDelete(path);
+                // window.location.reload()
               }
             }}
           >
