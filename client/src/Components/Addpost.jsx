@@ -90,6 +90,7 @@ function Addpost() {
               placeholder="Movie poster link"
               required
             />
+            
           </div>
           <div>
             <label
