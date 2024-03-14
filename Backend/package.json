@@ -2,10 +2,13 @@
   "name": "s53_worstratedmovies",
   "version": "1.0.0",
   "description": "",
-  "main": "./Backend/server.js",
+  "main": "./Backend/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node server.js"
+    "serve": "node index.js"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "author": "Harshavardhan",
   "license": "ISC",

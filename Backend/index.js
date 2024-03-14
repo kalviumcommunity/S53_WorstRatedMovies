@@ -36,9 +36,10 @@ app.use('/api',router)
 
 // for displaying the connection status 
 app.get('/', async (req, res) => {
-  const dbStatus = isConnected ? 'connected' : 'disconnected';
+  // const dbStatus = isConnected ? 'connected' : 'disconnected';
   res.send({
-    database: dbStatus,
+    // database: dbStatus,
+    message : welcome,
   });
 });
 
