@@ -20,7 +20,7 @@ function Signin() {
       const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          const response = await axios.post('http://localhost:3000/api/signin', { username:loginUser.username, password: loginUser.password });
+          const response = await axios.post('https://worst-rated-movies-webapp.vercel.app/api/signin', { username:loginUser.username, password: loginUser.password });
           console.log("response",response);
           if (response.status === 200) {
             console.log(response.data);
